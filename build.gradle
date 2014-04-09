@@ -1,0 +1,37 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.9.+'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+project(':vendor:bolts') {
+    apply plugin: 'android-library'
+
+    android {
+        compileSdkVersion 19
+        buildToolsVersion "19.0.3"
+
+        defaultConfig {
+            minSdkVersion 10
+            targetSdkVersion 19
+        }
+
+        sourceSets {
+            main {
+                manifest.srcFile 'Bolts/AndroidManifest.xml'
+                java.srcDirs = ['Bolts/src']
+            }
+        }
+    }
+}
